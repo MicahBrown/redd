@@ -48,6 +48,10 @@ module Redd
         @client.request(:delete, "/api/v1/me/friends/#{name}", raw: true, form: { id: name })
       end
 
+      def about
+        @client.get("/user/#{@attributes.fetch(:name)}/about")
+      end
+
       # Get the appropriate listing.
       # @param type [:overview, :submitted, :comments, :liked, :disliked, :hidden, :saved, :gilded]
       #   the type of listing to request
